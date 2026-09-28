@@ -1,0 +1,72 @@
+# Stage-1 ReCAST recipe for one node with eight NVIDIA H200 GPUs.
+
+[run]
+output_dir = "outputs/stage1-h200"
+run_name = "recast-sd35m-stage1"
+seed = 42
+expected_world_size = 8
+
+[model]
+model = "stabilityai/stable-diffusion-3.5-medium"
+revision = ""
+precision = "bf16"
+allow_tf32 = true
+gradient_checkpointing = true
+lora_rank = 32
+lora_alpha = 64
+
+[sampling]
+sampling_batches_per_epoch = 6
+prompts_per_rank = 1
+images_per_prompt = 24
+inference_steps = 25
+height = 512
+width = 512
+guidance_scale = 1.0
+max_sequence_length = 128
+
+[training]
+epochs = 121
+train_batch_size = 24
+gradient_accumulation_batches = 6
+inner_epochs = 1
+train_timesteps_per_sample = 24
+learning_rate = 3e-4
+weight_decay = 1e-4
+adam_beta1 = 0.9
+adam_beta2 = 0.999
+adam_epsilon = 1e-8
+max_grad_norm = 1.0
+nft_beta = 0.1
+advantage_clip = 5.0
+kl_beta = 1e-4
+old_policy_decay = 0.5
+old_policy_warmup_updates = 500
+
+[checkpointing]
+checkpoint_every = 30
+initialize_from = ""
+resume_from = ""
+
+[tracking]
+tracker = "jsonl"
+wandb_project = "recast"
+wandb_entity = ""
+
+[weighting]
+alpha = 2.0
+aggregation = "pre"
+sinkhorn_iterations = 1000
+sinkhorn_tolerance = 1e-9
+
+[rewards.clipscore]
+budget = 1.0
+temperature = 1.0
+
+[rewards.hpsv2]
+budget = 1.0
+temperature = 1.0
+
+[rewards.pickscore]
+budget = 1.0
+temperature = 1.0

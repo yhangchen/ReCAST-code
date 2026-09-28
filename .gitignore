@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+*.egg-info/
+build/
+dist/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+
+# Training and evaluation artifacts
+outputs/
+logs/
+wandb/
+checkpoints/
+*.log
+*.out
+*.err
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npz
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store

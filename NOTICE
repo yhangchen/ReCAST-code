@@ -1,0 +1,19 @@
+ReCAST
+
+This project contains a compact implementation derived from DiffusionNFT:
+
+  DiffusionNFT
+  Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES.
+  Licensed under the Apache License, Version 2.0.
+  https://github.com/NVlabs/DiffusionNFT
+
+The ReCAST-specific weighting and training changes are also distributed under
+the Apache License, Version 2.0. See LICENSE for the full terms.
+
+The structured object, count, color, and position evaluation in
+recast/geneval.py follows the GenEval methodology:
+
+  GenEval
+  Copyright (c) 2023 Dhruba Ghosh
+  Licensed under the MIT License.
+  https://github.com/djghosh13/geneval
